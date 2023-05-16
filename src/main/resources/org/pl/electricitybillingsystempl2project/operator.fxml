@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<TabPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+         minWidth="-Infinity" prefHeight="628.0" prefWidth="814.0" tabClosingPolicy="UNAVAILABLE"
+         xmlns="http://javafx.com/javafx/8.0.171"
+         fx:controller="org.pl.electricitybillingsystempl2project.Controllers.OperatorController">
+    <tabs>
+        <Tab fx:id="operatorCust" text="Customers">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="603.0" prefWidth="1044.0">
+                    <children>
+                        <Button fx:id="adminCustExit" layoutX="922.0" layoutY="618.0" mnemonicParsing="false"
+                                prefHeight="31.0" prefWidth="68.0" text="Exit"/>
+                        <Button fx:id="adminCustAddNewCust" layoutX="843.0" layoutY="48.0" mnemonicParsing="false"
+                                text="Add new Customer"/>
+                        <Button fx:id="operatorCustSearch" layoutX="37.0" layoutY="48.0" mnemonicParsing="false"
+                                onAction="#operatorCustomerSearch" prefHeight="31.0" prefWidth="109.0" text="Search"/>
+                        <TextField fx:id="operatorCustSearchBar" layoutX="176.0" layoutY="48.0" prefHeight="31.0"
+                                   prefWidth="525.0" promptText="Search"/>
+                        <Label layoutX="175.0" layoutY="94.0" prefHeight="28.0" prefWidth="85.0" text="Search By"/>
+                        <VBox layoutX="256.0" layoutY="101.0" prefHeight="176.0" prefWidth="138.0" spacing="10.0">
+                            <children>
+                                <RadioButton fx:id="operatorCustSearchById" mnemonicParsing="false" text="Id">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="SearchOperator"/>
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton fx:id="operatorCustSearchByName" mnemonicParsing="false" text="Name"
+                                             toggleGroup="$SearchOperator"/>
+                                <RadioButton fx:id="operatorCustSearchByEmail" mnemonicParsing="false" text="Email"
+                                             toggleGroup="$SearchOperator"/>
+                                <RadioButton fx:id="operatorCustSearchByPhone" mnemonicParsing="false" text="Phone"
+                                             toggleGroup="$SearchOperator"/>
+                                <RadioButton fx:id="operatorCustSearchByMeterId" mnemonicParsing="false" text="Meter Id"
+                                             toggleGroup="$SearchOperator"/>
+                                <RadioButton fx:id="operatorCustSearchByRegion" layoutX="10.0" layoutY="134.0"
+                                             mnemonicParsing="false" text="Region" toggleGroup="$SearchOperator"/>
+                            </children>
+                        </VBox>
+                        <ScrollPane fx:id="operatorCustTable" layoutX="178.0" layoutY="303.0" prefHeight="216.0"
+                                    prefWidth="535.0">
+                            <content>
+                                <TableView fx:id="operatorCustTable2" fixedCellSize="12.0" prefHeight="213.0"
+                                           prefWidth="520.0">
+                                    <columns>
+                                        <TableColumn fx:id="operatorTableId" prefWidth="87.0" text="Id"/>
+                                        <TableColumn fx:id="operatorTableName" prefWidth="97.9444580078125"
+                                                     text="Name"/>
+                                        <TableColumn fx:id="operatorTableEmail" prefWidth="95.28704833984375"
+                                                     text="Email"/>
+                                        <TableColumn fx:id="operatorTablePhone" prefWidth="98.072509765625"
+                                                     text="Phone"/>
+                                        <TableColumn fx:id="operatorTableDetails" prefWidth="84.0" text="Details"/>
+                                        <TableColumn fx:id="operatorTableMeterId" prefWidth="80.3333740234375"
+                                                     text="Meter Id"/>
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                    </columnResizePolicy>
+                                </TableView>
+                            </content>
+                        </ScrollPane>
+                        <Button fx:id="operatorCustExit" layoutX="652.0" layoutY="530.0" mnemonicParsing="false"
+                                onAction="#Exit" prefHeight="31.0" prefWidth="85.0" text="Exit"/>
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab fx:id="operatorRegionBills" text="Region Bills    ">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="389.0" prefWidth="885.0">
+                    <children>
+                        <TableView fx:id="opertorRegionBillsTable" layoutX="54.0" layoutY="151.0" prefHeight="303.0"
+                                   prefWidth="406.0">
+                            <columns>
+                                <TableColumn fx:id="operatorRegionBillsTableRegion" prefWidth="178.0" text="Region"/>
+                                <TableColumn fx:id="operatorRegionBillsTableBill" prefWidth="206.0" text="Bills"/>
+                            </columns>
+                        </TableView>
+                        <Button fx:id="operatorViewRegionBillsBillsByRegion" layoutX="54.0" layoutY="80.0"
+                                mnemonicParsing="false" onAction="#operatorBillsByRegionPrint" prefHeight="31.0"
+                                prefWidth="231.0" text="View Bills By Region"/>
+                        <Button fx:id="OperatorRegionBillsExit" layoutX="648.0" layoutY="525.0" mnemonicParsing="false"
+                                onAction="#Exit" prefHeight="31.0" prefWidth="83.0" text="Exit"/>
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab fx:id="operatorCustBills" text="Customers Bills ">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="389.0" prefWidth="885.0">
+                    <children>
+                        <Button fx:id="operatorCustBillsViewBillsByMeterId" layoutX="75.0" layoutY="105.0"
+                                mnemonicParsing="false" onAction="#operatorBillsByMeterIdPrint" prefHeight="31.0"
+                                prefWidth="197.0" text="view bills by Meter Id"/>
+                        <TableView fx:id="operatorCustBillsTable" layoutX="75.0" layoutY="162.0" prefHeight="301.0"
+                                   prefWidth="439.0">
+                            <columns>
+                                <TableColumn fx:id="operatorCustBillsTableMeterId" prefWidth="236.0" text="Meter Id"/>
+                                <TableColumn fx:id="operatorCustBillsTableBill" prefWidth="179.0" text="Bill"/>
+                            </columns>
+                        </TableView>
+                        <Button fx:id="operatorCustBillsExit" layoutX="659.0" layoutY="522.0" mnemonicParsing="false"
+                                onAction="#Exit" prefHeight="31.0" prefWidth="103.0" text="Exit"/>
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>
